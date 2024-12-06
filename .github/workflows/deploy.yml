@@ -104,3 +104,9 @@ jobs:
           webhook_url: "https://flbdvksng.g.kuroco.app/direct/menu/github/"
           webhook_secret: "d7ada97999ab7d4b1cdb4972e52ca5dc"
           data: '{"single_zip":"1","domain":"flbdvksng.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+      - name: Notify external API
+        run: |
+          curl -X POST https://jsonplaceholder.typicode.com/posts \
+          -H "Content-Type: application/json" \
+          -d '{"title": "GitHub Actions Test", "body": "This is a test notification from GitHub Actions.", "userId": 1}'
+
